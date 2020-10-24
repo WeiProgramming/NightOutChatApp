@@ -1,0 +1,21 @@
+.public-pages-landing {
+    background-image: url('../../../../images/club-hero.jpg');
+    background-size: cover;
+    min-height: 60vh;
+
+    .hero-content {
+        p {
+            font-size: 2rem;
+        }
+    }
+}
+
+.public-pages-about {
+    min-height: 40vh;
+    background-color: rgb(159, 163, 164);
+}
+
+.public-pages-howitworks {
+    min-height: 50vh;
+    background-color: rgb(61, 59, 65);
+}
