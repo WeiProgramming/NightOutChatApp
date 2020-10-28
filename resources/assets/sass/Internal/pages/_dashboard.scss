@@ -1,0 +1,46 @@
+.internal-pages-dashboard {
+    background-image: url('../../../images/club-hero.jpg');
+    background-size: cover;
+    min-height: 60vh;
+        .business-container {
+            min-height: 200px;
+            width: 100%;
+            border: 1px solid black;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 10px;
+            position: relative;
+            cursor: pointer;
+            .overlay {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-color: rgba(0,0,0,.5);
+            }
+            .business-content {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10;
+
+                &:hover {
+                    
+                }
+                p {
+                    font-size: 18px;
+                    font-weight: 700;
+                    text-align: center;
+                }
+            }
+        }
+
+
+    .hero-content {
+        p {
+            font-size: 2rem;
+        }
+    }
+}

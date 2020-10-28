@@ -11964,12 +11964,12 @@ a.text-dark:focus {
   }
 }
 
-section {
+.public-layout-default section {
   color: white;
   padding: 10% 0%;
 }
 
-section > p {
+.public-layout-default section > p {
   font-size: 24px;
 }
 
@@ -12004,5 +12004,64 @@ section > p {
 .public-pages-howitworks {
   min-height: 50vh;
   background-color: #3d3b41;
+}
+
+.internal-layout-default section {
+  color: white;
+  padding: 10% 0%;
+}
+
+.internal-layout-default section > p {
+  font-size: 24px;
+}
+
+.internal-pages-dashboard {
+  background-image: url(/images/club-hero.jpg?1664c3446e179ab1c6daca8bfffdf8a8);
+  background-size: cover;
+  min-height: 60vh;
+}
+
+.internal-pages-dashboard .business-container {
+  min-height: 200px;
+  width: 100%;
+  border: 1px solid black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.internal-pages-dashboard .business-container .overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.internal-pages-dashboard .business-container .business-content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+}
+
+.internal-pages-dashboard .business-container .business-content p {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.internal-pages-dashboard .hero-content p {
+  font-size: 2rem;
 }
 

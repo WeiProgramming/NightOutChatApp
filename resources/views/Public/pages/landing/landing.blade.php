@@ -6,12 +6,20 @@
             <div class="container hero-content">
                 <div class="row justify-content-center">
                     <div class="col-md-6 ">
-                        <p class="test">
+                        <p>
                             Find your friend | Live for the night
                         </p>
-                        <div class="">
+                        <div class="btn-group" role="group">
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                                <a href="{{ url('/dashboard') }}" class="btn btn-primary">Dashboard</a>
+                                <a class="btn btn-primary" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                 Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                                 @else
                                 <a href="{{ route('login') }}" class="btn btn-warning">Login</a>
                                 @if (Route::has('register'))
