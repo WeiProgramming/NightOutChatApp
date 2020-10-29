@@ -33,6 +33,7 @@
                                         <div class="overlay"></div>
                                         <div class="business-content">
                                             <p>{{$business['name']}}</p>
+                                            <a href="chatify/user/{{$business['id']}}" class="btn btn-primary">I'm Here</a>
                                         </div>
                                     </div>
                                 </div>

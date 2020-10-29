@@ -755,10 +755,12 @@ function getSharedPhotos(user_id) {
  */
 function messengerSearch(input) {
     console.log('input search', input);
+    // Getting location id from url to find users in this location
+    let location_id = window.location.href.split('/')[5];
     $.ajax({
         url: url + '/search',
         method: 'POST',
-        data: { '_token': access_token, 'input': input },
+        data: { '_token': access_token, 'input': input, 'location_id': location_id},
         dataType: 'JSON',
         beforeSend: () => {
             $('.search-records').html(listItemLoading(4));
@@ -771,8 +773,8 @@ function messengerSearch(input) {
             // update data-action required with [responsive design]
             cssMediaQueries();
         },
-        error: () => {
-            console.error('Server error, check your response');
+        error: (e) => {
+            console.error('Server error, check your response ', e);
         }
     });
 }
