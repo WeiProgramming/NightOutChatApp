@@ -757,6 +757,10 @@ function messengerSearch(input) {
     console.log('input search', input);
     // Getting location id from url to find users in this location
     let location_id = window.location.href.split('/')[5];
+    if(window.location.hash) {
+        // Fragment exists
+        location_id = location_id.substr(0, location_id.length-1);
+    }
     $.ajax({
         url: url + '/search',
         method: 'POST',

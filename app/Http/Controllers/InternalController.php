@@ -25,7 +25,7 @@ class InternalController extends Controller
         return view('Internal.pages.dashboard')->with(['businesses' => $businesses, 'total' => $total]);
     }
 
-    public function getUserChat($locationId, $id = null) {
+    public function getUserChat($location_id, $id = null) {
         // dd($businessId);
         // get current route
         $route = (in_array(\Request::route()->getName(), ['user', config('chatify.path')]))
@@ -34,8 +34,11 @@ class InternalController extends Controller
     
         // set user location id to the businessId
         $user = User::find(Auth::id());
-        $user->location_id = $locationId;
+        $user->location_id = $location_id;
         $user->save();
+
+        //get business details
+        $response = $this->getBusinessDetails($location_id);
 
         // prepare id
         return view('Chatify::pages.app', [
@@ -43,6 +46,7 @@ class InternalController extends Controller
             'route' => $route,
             'messengerColor' => Auth::user()->messenger_color,
             'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
+            'business_name' => json_decode($response,true)['name']
         ]);
     }
 }

@@ -45,9 +45,9 @@ trait YelpHelper
         return $response;
     }
 
-    function getBusinessDetails($business_id) {
+    function getBusinessDetails($location_id) {
         $client = new \GuzzleHttp\Client();
-        $url = $this->yelp_api_root.'businesses/'.$business_id;
+        $url = $this->yelp_api_root.'businesses/'.$location_id;
         $request = $client->get($url, ['headers' => ['Authorization' => 'Bearer ' . $this->api_key, 'Accept' => 'application/json']]);
         $response = $request->getBody()->getContents();
         return $response;
