@@ -10,6 +10,10 @@ use App\User;
 
 class InternalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     use YelpHelper;
 
     public function index()

@@ -1083,6 +1083,13 @@ $(document).ready(function () {
     $('.imageModal-close').on('click', function () {
         $("#imageModalBox").hide();
     });
+    // Search input on load
+    $(function() {
+        console.log('loaded');
+        $('.messenger-tab').hide();
+        $('.messenger-tab[data-view="search"]').show();
+        messengerSearch($(this).val());
+    })
 
     // Search input on focus
     $('.messenger-search').on('focus', function () {
