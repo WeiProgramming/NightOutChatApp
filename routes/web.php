@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +12,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/welcome', 'PublicController@index');
+Route::get('/', 'PublicController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PublicController@index')->name('home');
+
+Route::group(array('middleware'=> 'auth'), function () {
+    Route::get('/dashboard', 'InternalController@index');
+    Route::get('chatify/user/{businessId}', 'InternalController@getUserChat');
+});

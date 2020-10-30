@@ -755,10 +755,16 @@ function getSharedPhotos(user_id) {
  */
 function messengerSearch(input) {
     console.log('input search', input);
+    // Getting location id from url to find users in this location
+    let location_id = window.location.href.split('/')[5];
+    if(window.location.hash) {
+        // Fragment exists
+        location_id = location_id.substr(0, location_id.length-1);
+    }
     $.ajax({
         url: url + '/search',
         method: 'POST',
-        data: { '_token': access_token, 'input': input },
+        data: { '_token': access_token, 'input': input, 'location_id': location_id},
         dataType: 'JSON',
         beforeSend: () => {
             $('.search-records').html(listItemLoading(4));
@@ -771,8 +777,8 @@ function messengerSearch(input) {
             // update data-action required with [responsive design]
             cssMediaQueries();
         },
-        error: () => {
-            console.error('Server error, check your response');
+        error: (e) => {
+            console.error('Server error, check your response ', e);
         }
     });
 }
@@ -1081,6 +1087,13 @@ $(document).ready(function () {
     $('.imageModal-close').on('click', function () {
         $("#imageModalBox").hide();
     });
+    // Search input on load
+    $(function() {
+        console.log('loaded');
+        $('.messenger-tab').hide();
+        $('.messenger-tab[data-view="search"]').show();
+        messengerSearch($(this).val());
+    })
 
     // Search input on focus
     $('.messenger-search').on('focus', function () {
