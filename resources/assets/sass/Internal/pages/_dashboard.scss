@@ -2,7 +2,7 @@
     background-image: url('../../../images/club-hero.jpg');
     background-size: cover;
     min-height: 60vh;
-        .business-container {
+    .business-container {
             min-height: 200px;
             width: 100%;
             border: 1px solid black;
@@ -36,8 +36,15 @@
                     text-align: center;
                 }
             }
+    }
+    
+    .dashboard-title {
+        margin: 50px 0;
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
         }
-
+    }
 
     .hero-content {
         p {

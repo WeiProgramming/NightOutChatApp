@@ -8,7 +8,7 @@
                         <div class="btn-group" role="group">
                             @auth
                                 <a href="{{ url('/chatify') }}" class="btn btn-primary">Dashboard</a>
-                                <a class="btn btn-primary" href="{{ route('logout') }}"
+                                <a class="btn btn-light" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                  Logout
@@ -23,8 +23,8 @@
                                 @endif
                             @endif
                         </div>
-                        <div>
-                            <h1>Places Near You {{$total}}</h1>
+                        <div class ="dashboard-title">
+                            <h1>Places Near You - {{$total}}</h1>
                         </div>
                         <div class="row">
                             @foreach($businesses as $business)

@@ -11964,6 +11964,13 @@ a.text-dark:focus {
   }
 }
 
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .public-layout-default section {
   color: white;
   padding: 10% 0%;
@@ -11992,8 +11999,28 @@ a.text-dark:focus {
   min-height: 60vh;
 }
 
-.public-pages-landing .hero-content p {
+.public-pages-landing .hero-content .landing-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.public-pages-landing .hero-content .landing-container > * {
+  text-align: center;
+}
+
+.public-pages-landing .hero-content .landing-container p {
   font-size: 2rem;
+}
+
+.public-pages-landing .hero-content .landing-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .public-pages-about {
@@ -12001,9 +12028,49 @@ a.text-dark:focus {
   background-color: #9fa3a4;
 }
 
+.public-pages-about .image-container {
+  padding: 10px;
+  background-color: whitesmoke;
+}
+
 .public-pages-howitworks {
   min-height: 50vh;
   background-color: #3d3b41;
+}
+
+.public-pages-howitworks h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.public-pages-howitworks .steps-container {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 30px;
+}
+
+.public-pages-howitworks .steps-container .about-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.public-pages-howitworks svg {
+  font-size: 10rem;
 }
 
 .internal-layout-default section {
@@ -12063,6 +12130,15 @@ a.text-dark:focus {
   font-size: 18px;
   font-weight: 700;
   text-align: center;
+}
+
+.internal-pages-dashboard .dashboard-title {
+  margin: 50px 0;
+}
+
+.internal-pages-dashboard .dashboard-title h1 {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .internal-pages-dashboard .hero-content p {

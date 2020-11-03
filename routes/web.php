@@ -16,9 +16,9 @@ Route::get('/', 'PublicController@index');
 
 Auth::routes();
 
-Route::get('/home', 'PublicController@index')->name('home');
+Route::get('/home', 'PublicController@index');
 
 Route::group(array('middleware'=> 'auth'), function () {
-    Route::get('/dashboard', 'InternalController@index');
+    Route::get('/dashboard', 'InternalController@index')->name('home');
     Route::get('chatify/user/{businessId}', 'InternalController@getUserChat');
 });

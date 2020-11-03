@@ -8,6 +8,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 // Custom Styling
+@import './Shared/shared.scss';
+
 @import './Public/public.scss';
 
 @import './Internal/internal.scss';
