@@ -1,5 +1,5 @@
 <?php
-
+// TODO: Make this an independant class
 namespace App\Http\Controllers\Utils;
 
 use \App\Http\Controllers\Utils\LocationHelper;
@@ -27,11 +27,14 @@ trait YelpHelper
             "sort_by"       => "distance",
             "categories"    => "nightlife",
             "limit"         => 50
-            ];
+        ];
     }
-
-    function searchBusinesses() {
-        $userYelpData = $this->getYelpUserInfo();
+    function getTotalBusinessPages($totalBusiness, $limit) {
+        dd($totalBusiness);
+        $pages = ceil($totalBusiness/$limit);
+        return $pages;
+    }
+    function searchBusinesses($userYelpData, $searchInput = '') {
         $client = new \GuzzleHttp\Client();
         $url = $this->yelp_api_root.'businesses/search?latitude='
         .$userYelpData['latitude'].'&longitude='
@@ -39,9 +42,11 @@ trait YelpHelper
         .$userYelpData['radius'].'&sort_by='
         .$userYelpData['sort_by'].'&categories='
         .$userYelpData['categories'].'&limit='
-        .$userYelpData['limit'];
+        .$userYelpData['limit'].'&term='.$searchInput;
         $request = $client->get($url, ['headers' => ['Authorization' => 'Bearer ' . $this->api_key, 'Accept' => 'application/json']]);
         $response = $request->getBody()->getContents();
+        // $totalBusinesses = json_decode($response,true)['total'];
+        // $numBusinessPages = $this->getTotalBusinessPages( $totalBusinesses, $userYelpData['limit']);
         return $response;
     }
 
@@ -52,6 +57,27 @@ trait YelpHelper
         $response = $request->getBody()->getContents();
         return $response;
     }
+
+    // // TODO: This gets all businesses from the user and sends it back as an array of objs
+    // function getAllUserBusinesses() {
+    //     $allBusinessArr = array();
+    //     $userYelpData = $this->getYelpUserInfo();
+    //     $businesses = $this->searchBusinesses($offset = null, $userYelpData);
+    //     $total = json_decode($businesses,true)['total'];
+    //     $numBusinessPages = 0;
+    //     $counter = 0;
+    //     while($counter <= $numBusinessPages) {
+    //         $currentPageBusiness = $this->searchBusinesses($counter, $userYelpData);
+    //         $currentPageBusiness = json_decode($businesses,true)['businesses'];
+    //         $allBusinessArr = array_merge($allBusinessArr, $currentPageBusiness);
+    //         $counter++;
+    //         $numBusinessPages++;
+    //         sleep(2);
+    //     }
+    //     dd($allBusinessArr);
+
+    //     return ['total' => $total, 'businesses' => $allBusinessArr, 'total_businesspages' => $numBusinessPages];
+    // }
 
     // function getBusinessReviews() {
     //     $yelpFusion = new Yelp(API_TOKEN);

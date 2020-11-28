@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use \App\Http\Controllers\Utils\YelpHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\User;
-
 
 class InternalController extends Controller
 {
@@ -18,7 +18,9 @@ class InternalController extends Controller
 
     public function index()
     {
-        $response = $this->searchBusinesses();
+        $userData = $this->getYelpUserInfo();
+        $response = $this->searchBusinesses($userData);
+        // dd($response);
         $businesses = json_decode($response,true)['businesses'];
         $total = json_decode($response,true)['total'];
         // dd(json_decode($response,true));
@@ -48,5 +50,12 @@ class InternalController extends Controller
             'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
             'business_name' => json_decode($response,true)['name']
         ]);
+    }
+    // Receives Request
+    public function getBusinessByInput(Request $request) {
+        $input = $request->all()["input"];
+        $userData = $this->getYelpUserInfo();
+        $response = $this->searchBusinesses($userData, $input);
+        return response()->json(array('success' => true, 'businesses' => json_decode($response,true)['businesses'], 'total' => json_decode($response,true)['total']));
     }
 }

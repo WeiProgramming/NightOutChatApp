@@ -20,5 +20,6 @@ Route::get('/home', 'PublicController@index');
 
 Route::group(array('middleware'=> 'auth'), function () {
     Route::get('/dashboard', 'InternalController@index')->name('home');
+    Route::post('/dashboard', 'InternalController@getBusinessByInput');
     Route::get('chatify/user/{businessId}', 'InternalController@getUserChat');
 });
